@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="Style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My First Web Page</title>
+</head>
+
+
+<body>
+  <h1 class="heading">
+    <b>WORK TO-DOS</b>
+
+  </h1>
+  <p class="paragraph1">
+    Enter text into field to add item to your list.
+  </p>
+  <p class="paragraph2">
+    Click the item to mark it as complete.
+  </p>
+  <p class="paragraph3">
+    Click the "X" To remove the item from your list.
+  </p>
+  <form class="input">
+    <input type="text" id="new-task" placeholder="New Item..." size="50">
+    <button type="button" onclick="addTask()">Save!</button>
+  </form>
+  <ul id="task-list">
+  </ul>
+  <div id="hlo">
+
+  </div>
+  
+
+  <script>
+    function saved() {
+      const localStorageKey = 'Data';
+      let myArray = [];
+      const savedData = JSON.parse(localStorage.getItem(localStorageKey));
+      console.log(savedData, 'saveData')
+  
+      var y = localStorage.getItem('Data');
+      console.log(y, 'rhrhdfd');
+      let h;
+      let v;
+      for (var i = 0; i < savedData.length; i++) {
+
+         h = document.getElementById("hlo");
+         v = h.insertAdjacentHTML("afterend",`<p id="J" class ="name">${savedData[i]}</p>`);
+
+         const k  = document.getElementById("J");
+      var dBtn = document.createElement("button");
+      
+      dBtn.appendChild(document.createTextNode("X"));
+      k.appendChild(dBtn);
+      dBtn.addEventListener("click", deleteListItem);
+      
+      function deleteListItem() {
+
+        k.classList.add("delete")
+  }
+  function del(){
+    localStorage.removeItem("Data");
+  }
+  dBtn.addEventListener("click",del);
+
+      }
+
+      
+    }
+    saved();
+
+  </script>
+
+  <script type="text/javascript" src="Javascript.js"></script>
+</body>
+
+</html>
